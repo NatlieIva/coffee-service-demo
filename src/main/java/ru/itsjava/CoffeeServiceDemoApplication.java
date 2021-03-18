@@ -3,6 +3,7 @@ package ru.itsjava;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import ru.itsjava.dao.DiscountCardDao;
 import ru.itsjava.service.CoffeeHouse;
 
 @SpringBootApplication
@@ -12,7 +13,7 @@ public class CoffeeServiceDemoApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(CoffeeServiceDemoApplication.class, args);
         context.getBean(CoffeeHouse.class).coffeeSale();
+
+//        System.out.println("context.getBean(DiscountCardDao.class).countDiscountCard() = " + context.getBean(DiscountCardDao.class).countDiscountCard());
     }
-
-
 }

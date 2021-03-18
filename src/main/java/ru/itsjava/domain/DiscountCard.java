@@ -1,14 +1,15 @@
 package ru.itsjava.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-@Getter
-@RequiredArgsConstructor
-public enum DiscountCard {
-    WHITE(5),
-    BLACK(10);
 
+
+@AllArgsConstructor
+@Data
+public class DiscountCard {
+    private final int id;
+    private final String color;
     private final int discount;
-
-
 }

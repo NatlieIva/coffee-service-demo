@@ -9,11 +9,11 @@ import ru.itsjava.domain.Price;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+@Repository
 @RequiredArgsConstructor
 @Getter
-@Repository
 public class CoffeeDaoImpl implements CoffeeDao {
-
 
     @Override
     public Coffee findByPrice(double price) {

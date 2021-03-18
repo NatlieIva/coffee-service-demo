@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class CoffeeHouseImpl implements CoffeeHouse {
     private final CoffeeService coffeeService;
 
@@ -21,6 +21,5 @@ public class CoffeeHouseImpl implements CoffeeHouse {
         double order = console.nextDouble();
         System.out.println(
                 coffeeService.getCoffeeByPrice(order).getName() + " for you");
-
     }
 }

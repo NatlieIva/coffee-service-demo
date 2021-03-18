@@ -6,8 +6,8 @@ import ru.itsjava.dao.CoffeeDao;
 import ru.itsjava.dao.CoffeeDaoImpl;
 import ru.itsjava.domain.Coffee;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CoffeeServiceImpl implements CoffeeService {
 
     private final CoffeeDao coffeeDao;
