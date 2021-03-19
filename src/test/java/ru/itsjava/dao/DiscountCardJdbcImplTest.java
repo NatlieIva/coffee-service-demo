@@ -40,11 +40,12 @@ public class DiscountCardJdbcImplTest {
     public void shouldHaveCorrectUpdate() {
         DiscountCard discountCard = new DiscountCard(4, "gold", 10);
         discountCardJdbc.insertDiscountCard(discountCard);
+
         DiscountCard newDiscountCard = new DiscountCard(4, "diamond", 15);
         discountCardJdbc.updateDiscountCard(newDiscountCard);
 
-//        Assertions.assertEquals();
-
+        String foundColor = discountCardJdbc.getColor(4);
+        Assertions.assertEquals(foundColor, newDiscountCard.getColor());
     }
 }
 
