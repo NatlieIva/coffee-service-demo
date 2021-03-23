@@ -1,5 +1,6 @@
 INSERT INTO DISCOUNT_CARDS(ID, COLOR, DISCOUNT)
-VALUES (1, 'white', 0);
+VALUES (1, 'white', 0),
+       (2, 'black', 5);
 
 INSERT INTO EMAILS(ID, NAME)
 VALUES (1, 'Bob@email.com');
