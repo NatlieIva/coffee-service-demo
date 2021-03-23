@@ -38,7 +38,7 @@ public class CoffeeServiceDemoApplication {
         UserDao userDao = context.getBean(UserDao.class);
         System.out.println("userDao.countUser() = " + userDao.countUser());
 
-        User user1 = new User(1, "Sam",diamondDiscountCard, new Email(3, "@EEE.com"));
+        User user1 = new User(3, "Sam",diamondDiscountCard, new Email(1, "@EEE.com"));
         userDao.insertUser(user1);
         userDao.deleteUser(2);
 
