@@ -3,35 +3,58 @@ package ru.itsjava.dao;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Coffee;
-import ru.itsjava.domain.Price;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.Optional;
 
-@Repository
+
 @RequiredArgsConstructor
 @Getter
+@Repository
 public class CoffeeDaoImpl implements CoffeeDao {
+    @PersistenceContext
+    private EntityManager entityManager;
 
+    @Transactional
     @Override
-    public Coffee findByPrice(double price) {
-        List<Coffee> coffeeList = new ArrayList<>();
-
-        Coffee americano = new Coffee("Americano", new Price(100.0));
-        Coffee latte = new Coffee("Latte", new Price(200.0));
-        Coffee cappuccino = new Coffee("Cappuccino", new Price(150.0));
-        Coffee espresso = new Coffee("Espresso", new Price(50.0));
-        coffeeList.add(americano);
-        coffeeList.add(latte);
-        coffeeList.add(cappuccino);
-        coffeeList.add(espresso);
-
-        for (Coffee coffee : coffeeList) {
-        if (coffee.getPrice().getPrice() == price)
-            return coffee;
+    public Optional<Coffee> findByPrice(int price) {
+        Query query = entityManager.createQuery("select id from Coffee where price = :price");
+        query.setParameter("price", price);
+        Long foundCoffeeId = (Long) query.getSingleResult();
+        Coffee foundCoffee = entityManager.find(Coffee.class, foundCoffeeId);
+            return Optional.ofNullable(foundCoffee);
     }
-        throw new NoSuchElementException("There is no coffee at this price");
+
+    @Transactional
+    @Override
+    public Optional<Coffee> findById(long id) {
+        return Optional.ofNullable(entityManager.find(Coffee.class, id));
+    }
+
+    @Transactional
+    @Override
+    public Coffee saveCoffee(Coffee coffee) {
+        if (coffee.getId() == 0L) {
+            entityManager.persist(coffee);
+            return coffee;
+        }
+        return entityManager.merge(coffee);
+    }
+
+    @Transactional
+    @Override
+    public void deleteCoffeeById(long id) {
+        Coffee deleteCoffee = entityManager.find(Coffee.class, id);
+        entityManager.remove(deleteCoffee);
+    }
+
+    @Transactional
+    @Override
+    public void updateCoffee(Coffee coffee) {
+        entityManager.merge(coffee);
     }
 }

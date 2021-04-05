@@ -2,14 +2,28 @@ package ru.itsjava.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity
 public class User {
-    private final int id;
-    private final String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "discount_card_id")
     private DiscountCard discountCard;
-    private final Email email;
+
+    @OneToOne(fetch=FetchType.EAGER, optional=true, cascade=CascadeType.ALL)
+    @JoinColumn(name = "email_id")
+    private  Email email;
 }
