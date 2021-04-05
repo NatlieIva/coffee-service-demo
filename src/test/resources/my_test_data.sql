@@ -3,7 +3,8 @@ VALUES (1, 'white', 0),
        (2, 'black', 5);
 
 INSERT INTO EMAILS(ID, NAME)
-VALUES (1, 'Bob@email.com');
+VALUES (1, 'Bob@email.com'),
+       (2,'Kate@mail.ru');
 
 INSERT INTO USERS(ID, NAME, DISCOUNT_CARD_ID, EMAIL_ID)
-VALUES (1, 'Bob', 1, 1);
+VALUES (1, 'Bob', 2, 1);

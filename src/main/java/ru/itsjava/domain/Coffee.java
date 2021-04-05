@@ -1,25 +1,24 @@
 package ru.itsjava.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@ToString
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Coffee {
-    private final String name;
-    private final Price price;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-//    AMERICANO("Americano", 100.0),
-//    LATTE("Latte", 200.0),
-//    CAPPUCCINO("Cappuccino", 150.0),
-//    ESPRESSO("Espresso", 50.0);
-//
-//    private final String name;
-//    private final double price;
+    @Column(name = "name")
+    private String name;
+
+    @Column (name = "price")
+    private int price;
 }

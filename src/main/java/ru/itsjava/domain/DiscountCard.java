@@ -2,11 +2,20 @@ package ru.itsjava.domain;
 
 import lombok.*;
 
+import javax.persistence.*;
 
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class DiscountCard {
-    private final int id;
-    private final String color;
-    private final int discount;
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "discount")
+    private int discount;
 }
+

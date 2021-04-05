@@ -1,18 +1,17 @@
 package ru.itsjava.dao;
 
-import ru.itsjava.domain.DiscountCard;
 import ru.itsjava.domain.User;
 
 import java.util.Optional;
 
 public interface UserDao {
-    int countUser();
+//    int countUser();
 
-    long insertUser(User user);
+    User saveUser(User user);
 
-    void deleteUser(int id);
+    void deleteUserById(long id);
 
-    void updateUser(User user, int discountCardId);
+    void updateUser(User user);
 
-    Optional<User> findById(int id);
+    Optional<User> findUserById(long id);
 }
