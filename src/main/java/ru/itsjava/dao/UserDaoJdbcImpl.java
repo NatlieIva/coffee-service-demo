@@ -42,12 +42,13 @@ public class UserDaoJdbcImpl implements UserDao {
         entityManager.merge(user);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Optional<User> findUserById(long id) {
         return Optional.ofNullable(entityManager.find(User.class, id));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<User> findUserByEmail(Email email) {
         Query query = entityManager.createQuery("select userId from emails where name = :email");

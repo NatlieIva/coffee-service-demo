@@ -38,15 +38,16 @@ public class EmailDaoImpl implements EmailDao{
         entityManager.merge(email);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Optional<Email> findById(long id) {
         return Optional.ofNullable(entityManager.find(Email.class, id));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Email> findByEmailName(String emailName) {
-        Query query = entityManager.createQuery("select id from emails where email_name = :email_name");
+        Query query = entityManager.createQuery("select id from emails where name = :email_name");
         query.setParameter("email_name", emailName);
         Long foundEmailId = (Long) query.getSingleResult();
         Email foundEmail = entityManager.find(Email.class, foundEmailId);

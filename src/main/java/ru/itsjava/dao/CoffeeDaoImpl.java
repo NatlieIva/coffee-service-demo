@@ -19,7 +19,7 @@ public class CoffeeDaoImpl implements CoffeeDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Optional<Coffee> findByPrice(int price) {
         Query query = entityManager.createQuery("select id from coffees where price = :price");
@@ -29,7 +29,7 @@ public class CoffeeDaoImpl implements CoffeeDao {
             return Optional.ofNullable(foundCoffee);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Optional<Coffee> findById(long id) {
         return Optional.ofNullable(entityManager.find(Coffee.class, id));

@@ -39,7 +39,7 @@ public class DiscountCardJdbcImpl implements DiscountCardDao {
         entityManager.merge(discountCard);
     }
 
-    @Override
+    @Transactional(readOnly = true)
     public Optional<DiscountCard> findById(long id) {
         return Optional.ofNullable(entityManager.find(DiscountCard.class, id));
     }
