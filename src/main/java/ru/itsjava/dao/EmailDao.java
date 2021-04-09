@@ -13,4 +13,7 @@ public interface EmailDao {
     void updateEmail(Email email);
 
     Optional<Email> findById(long id);
+
+    Optional<Email> findByEmailName(String emailName);
+
 }

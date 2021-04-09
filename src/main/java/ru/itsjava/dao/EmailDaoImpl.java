@@ -2,10 +2,12 @@ package ru.itsjava.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itsjava.domain.Coffee;
 import ru.itsjava.domain.Email;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.Optional;
 
 @Repository
@@ -40,5 +42,14 @@ public class EmailDaoImpl implements EmailDao{
     @Override
     public Optional<Email> findById(long id) {
         return Optional.ofNullable(entityManager.find(Email.class, id));
+    }
+
+    @Override
+    public Optional<Email> findByEmailName(String emailName) {
+        Query query = entityManager.createQuery("select id from emails where email_name = :email_name");
+        query.setParameter("email_name", emailName);
+        Long foundEmailId = (Long) query.getSingleResult();
+        Email foundEmail = entityManager.find(Email.class, foundEmailId);
+        return Optional.ofNullable(foundEmail);
     }
 }

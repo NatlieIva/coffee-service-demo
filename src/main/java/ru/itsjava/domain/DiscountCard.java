@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "discount_cards")
 public class DiscountCard {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

@@ -22,7 +22,7 @@ public class CoffeeDaoImpl implements CoffeeDao {
     @Transactional
     @Override
     public Optional<Coffee> findByPrice(int price) {
-        Query query = entityManager.createQuery("select id from Coffee where price = :price");
+        Query query = entityManager.createQuery("select id from coffees where price = :price");
         query.setParameter("price", price);
         Long foundCoffeeId = (Long) query.getSingleResult();
         Coffee foundCoffee = entityManager.find(Coffee.class, foundCoffeeId);

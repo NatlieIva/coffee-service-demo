@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "emails")
 public class Email {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
