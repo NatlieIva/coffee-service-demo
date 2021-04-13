@@ -18,7 +18,4 @@ public class Email {
 
     @Column(name = "email_name")
     private String name;
-
-    @Column(name = "user_id")
-    private long userId;
 }

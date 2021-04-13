@@ -1,9 +1,8 @@
-package ru.itsjava.dao;
+package ru.itsjava.repository;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Coffee;
 
 import javax.persistence.EntityManager;
@@ -15,11 +14,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Getter
 @Repository
-public class CoffeeDaoImpl implements CoffeeDao {
+public class CoffeeRepositoryImpl implements CoffeeRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional(readOnly = true)
     @Override
     public Optional<Coffee> findByPrice(int price) {
         Query query = entityManager.createQuery("select id from coffees where price = :price");
@@ -29,13 +27,11 @@ public class CoffeeDaoImpl implements CoffeeDao {
             return Optional.ofNullable(foundCoffee);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public Optional<Coffee> findById(long id) {
         return Optional.ofNullable(entityManager.find(Coffee.class, id));
     }
 
-    @Transactional
     @Override
     public Coffee saveCoffee(Coffee coffee) {
         if (coffee.getId() == 0L) {
@@ -45,14 +41,12 @@ public class CoffeeDaoImpl implements CoffeeDao {
         return entityManager.merge(coffee);
     }
 
-    @Transactional
     @Override
     public void deleteCoffeeById(long id) {
         Coffee deleteCoffee = entityManager.find(Coffee.class, id);
         entityManager.remove(deleteCoffee);
     }
 
-    @Transactional
     @Override
     public void updateCoffee(Coffee coffee) {
         entityManager.merge(coffee);

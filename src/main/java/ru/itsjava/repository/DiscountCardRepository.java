@@ -1,9 +1,9 @@
-package ru.itsjava.dao;
+package ru.itsjava.repository;
 
 import ru.itsjava.domain.DiscountCard;
 import java.util.Optional;
 
-public interface DiscountCardDao {
+public interface DiscountCardRepository {
 
 //    int countDiscountCard();
 

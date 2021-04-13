@@ -2,7 +2,9 @@ package ru.itsjava.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.itsjava.dao.EmailDao;
+import ru.itsjava.repository.EmailRepository;
+import ru.itsjava.domain.Email;
+import ru.itsjava.domain.User;
 
 @Service
 @AllArgsConstructor
@@ -11,7 +13,7 @@ public class CoffeeHouseImpl implements CoffeeHouse {
     private final ScannerService scannerService;
     private final UserAuthorizationService userAuthorizationService;
     private final DiscountCalculationService discountCalculation;
-    private final EmailDao emailDao;
+    private final EmailService emailService;
 
     @Override
     public void coffeeSale() {
@@ -26,10 +28,12 @@ public class CoffeeHouseImpl implements CoffeeHouse {
                 + "Espresso - 50.0");
 
         int priceRequest = Integer.parseInt(scannerService.scannerStart());
+//        Email foundEmailByName = emailService.findByEmailName(emailRequest);
+//        User foundUserByEmail = userAuthorizationService.authorization(foundEmailByName);
+        User foundUserByEmail = userAuthorizationService.authorization(emailRequest);
 
-        System.out.println(coffeeService.getCoffeeByPrice(priceRequest).get() + " for you");
-        System.out.println("With your discount for pay: " + discountCalculation.calculate(
-                userAuthorizationService.authorization(emailDao.findByEmailName(emailRequest).get()),
+        System.out.println(coffeeService.findByPrice(priceRequest).get() + " for you");
+        System.out.println("With your discount for pay: " + discountCalculation.calculate(foundUserByEmail,
                 priceRequest));
     }
 }

@@ -1,11 +1,11 @@
-package ru.itsjava.dao;
-
+package ru.itsjava.service;
 
 import ru.itsjava.domain.Email;
 
 import java.util.Optional;
 
-public interface EmailDao {
+public interface EmailService {
+
     Email saveEmail(Email email);
 
     void deleteEmailById(long id);
@@ -15,5 +15,4 @@ public interface EmailDao {
     Optional<Email> findById(long id);
 
     Optional<Email> findByEmailName(String emailName);
-
 }

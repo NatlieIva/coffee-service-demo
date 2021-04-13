@@ -3,7 +3,7 @@ VALUES (1, 'white', 0),
        (2, 'black', 5),
        (3, 'gold', 10);
 
-INSERT INTO EMAILS(ID, NAME)
+INSERT INTO EMAILS(ID, EMAIL_NAME)
 VALUES (1, 'Bob@email.com'),
        (2, 'Jack@email.com');
 

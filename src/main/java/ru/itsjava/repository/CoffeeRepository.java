@@ -1,9 +1,9 @@
-package ru.itsjava.dao;
+package ru.itsjava.repository;
 
 import ru.itsjava.domain.Coffee;
 import java.util.Optional;
 
-public interface CoffeeDao {
+public interface CoffeeRepository {
     Optional<Coffee> findByPrice(int price);
 
     Optional<Coffee> findById(long id);
