@@ -6,6 +6,7 @@ import ru.itsjava.domain.Email;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -42,8 +43,13 @@ public class EmailRepositoryImpl implements EmailRepository {
     public Optional<Email> findByEmailName(String emailName) {
         Query query = entityManager.createQuery("select id from emails where name = :email_name");
         query.setParameter("email_name", emailName);
-        Long foundEmailId = (Long) query.getSingleResult();
-        Email foundEmail = entityManager.find(Email.class, foundEmailId);
-        return Optional.ofNullable(foundEmail);
+        List resultList = query.getResultList();
+        if (resultList.isEmpty()) {
+            return Optional.empty();
+        } else {
+            Long foundEmailId = (Long) resultList.get(0);
+            Email foundEmail = entityManager.find(Email.class, foundEmailId);
+            return Optional.ofNullable(foundEmail);
+        }
     }
 }

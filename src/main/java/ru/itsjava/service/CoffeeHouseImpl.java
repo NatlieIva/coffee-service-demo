@@ -22,14 +22,12 @@ public class CoffeeHouseImpl implements CoffeeHouse {
 
 
         System.out.println("What price do you want coffee?");
-        System.out.println("Americano - 100.0" + '\n'
-                + "Latte - 200.0" + '\n'
-                + "Cappuccino - 150.0" + '\n'
-                + "Espresso - 50.0");
+        System.out.println("Americano - 100" + '\n'
+                + "Latte - 200" + '\n'
+                + "Cappuccino - 150" + '\n'
+                + "Espresso - 50");
 
         int priceRequest = Integer.parseInt(scannerService.scannerStart());
-//        Email foundEmailByName = emailService.findByEmailName(emailRequest);
-//        User foundUserByEmail = userAuthorizationService.authorization(foundEmailByName);
         User foundUserByEmail = userAuthorizationService.authorization(emailRequest);
 
         System.out.println(coffeeService.findByPrice(priceRequest).get() + " for you");

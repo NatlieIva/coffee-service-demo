@@ -17,5 +17,4 @@ public class CoffeeServiceDemoApplication {
         Console.main(args);
         context.getBean(CoffeeHouse.class).coffeeSale();
     }
-
 }

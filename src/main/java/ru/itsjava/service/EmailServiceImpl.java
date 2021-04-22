@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Email;
 import ru.itsjava.repository.EmailRepository;
 
+import javax.persistence.NoResultException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -40,6 +41,10 @@ public class EmailServiceImpl implements EmailService {
     @Transactional(readOnly = true)
     @Override
     public Optional<Email> findByEmailName(String emailName) {
-        return emailRepository.findByEmailName(emailName);
+        try {
+            return emailRepository.findByEmailName(emailName);
+        } catch (NoResultException noResultException){
+            return Optional.empty();
+        }
     }
 }
