@@ -23,7 +23,9 @@ public class UserAuthorizationServiceImpl implements UserAuthorizationService {
         Email foundEmailByName;
         if (emailService.findByEmailName(email).isEmpty()) {
             foundEmailByName = emailService.saveEmail(new Email(0L, email));
-        } else foundEmailByName = emailService.findByEmailName(email).get();
+        } else {
+            foundEmailByName = emailService.findByEmailName(email).get();
+        }
         if (userService.findUserByEmail(foundEmailByName).isEmpty()) {
             return addUser();
         }
