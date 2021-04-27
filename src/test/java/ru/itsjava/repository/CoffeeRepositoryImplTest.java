@@ -1,27 +1,31 @@
 package ru.itsjava.repository;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.context.annotation.Import;
 import ru.itsjava.domain.Coffee;
-import ru.itsjava.service.CoffeeService;
 
-@SpringBootTest
+import javax.persistence.EntityManager;
+import java.util.Optional;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@DisplayName("Класс CoffeeRepository должен: ")
+@DataJdbcTest
+@Import(CoffeeRepositoryImpl.class)
 public class CoffeeRepositoryImplTest {
+    @Autowired
+    private CoffeeRepositoryImpl coffeeRepository;
 
-    private CoffeeService coffeeService;
-    private final static Coffee COFFEE = new Coffee(0L, "Mocha", 160);
+    @Autowired
+    private EntityManager entityManager;
 
     @Test
-    public void shouldCorrectFindByPrice(){
-        Coffee foundCoffee = coffeeService.findByPrice(100).get();
-        Assertions.assertEquals("Americano", foundCoffee.getName());
+    public void shouldHaveCorrectFindById(){
+        Coffee expectedCoffee = entityManager.find(Coffee.class, 1L);
+        Optional<Coffee> actualCoffee = coffeeRepository.findById(1L);
+        assertThat(actualCoffee).isPresent().get().usingRecursiveComparison().isEqualTo(expectedCoffee);
     }
-
-//    @Test
-//    public void shouldHaveCorrectSave() {
-//    coffeeService.saveCoffee(COFFEE);
-////        Coffee foundCoffee = coffeeService.findByPrice(COFFEE.getPrice()).get();
-//        Assertions.assertEquals(COFFEE.getName(), coffeeService.findByPrice(COFFEE.getPrice()).get().getName());
-//    }
 }

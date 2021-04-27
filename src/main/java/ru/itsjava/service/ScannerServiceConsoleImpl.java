@@ -6,12 +6,11 @@ import java.util.Scanner;
 
 @Service
 public class ScannerServiceConsoleImpl implements ScannerService{
-    private Scanner console = new Scanner(System.in);
+    private final Scanner console = new Scanner(System.in);
 
     @Override
     public String scannerStart() {
-        System.out.println("Scanner is ready");
-        String order = console.nextLine();
-        return order;
+        System.out.println("The scanner is ready to read");
+        return console.nextLine();
     }
 }

@@ -17,22 +17,17 @@ public class UserAuthorizationServiceImpl implements UserAuthorizationService {
     private final ScannerService scannerService;
     private final DiscountCardRepository discountCardRepository;
 
-    @Transactional
     @Override
     public User authorization(String email) {
         Email foundEmailByName;
-        if (emailService.findByEmailName(email).isEmpty()) {
-            foundEmailByName = emailService.saveEmail(new Email(0L, email));
-        } else {
+        if (emailService.findByEmailName(email).isPresent()) {
             foundEmailByName = emailService.findByEmailName(email).get();
-        }
-        if (userService.findUserByEmail(foundEmailByName).isEmpty()) {
+        } else {
             return addUser();
         }
         return userService.findUserByEmail(foundEmailByName).get();
     }
 
-    @Transactional
     @Override
     public User addUser() {
         System.out.println("Enter your name");
