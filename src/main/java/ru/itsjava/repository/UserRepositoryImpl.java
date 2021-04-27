@@ -11,9 +11,8 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-
-@RequiredArgsConstructor
 @Repository
+@RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager entityManager;
