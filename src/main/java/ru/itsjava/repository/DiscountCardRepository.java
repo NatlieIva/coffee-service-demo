@@ -1,11 +1,10 @@
 package ru.itsjava.repository;
 
 import ru.itsjava.domain.DiscountCard;
+
 import java.util.Optional;
 
 public interface DiscountCardRepository {
-
-//    int countDiscountCard();
 
     DiscountCard saveDiscountCard(DiscountCard discountCard);
 

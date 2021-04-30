@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.Scanner;
 
 @Service
-public class ScannerServiceConsoleImpl implements ScannerService{
+public class ScannerServiceConsoleImpl implements ScannerService {
     private final Scanner console = new Scanner(System.in);
 
     @Override

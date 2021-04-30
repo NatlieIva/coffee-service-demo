@@ -28,14 +28,14 @@ public class EmailRepositoryImplTest {
     private EntityManager entityManager;
 
     @Test
-    public void shouldHaveCorrectFindById(){
+    public void shouldHaveCorrectFindById() {
         Email expectedEmail = entityManager.find(Email.class, FIRST_EMAIL_ID);
-        Optional<Email> actualEmail= emailRepository.findById(FIRST_EMAIL_ID);
+        Optional<Email> actualEmail = emailRepository.findById(FIRST_EMAIL_ID);
         assertThat(actualEmail).isPresent().get().usingRecursiveComparison().isEqualTo(expectedEmail);
     }
 
     @Test
-    public void shouldHaveCorrectUpdate(){
+    public void shouldHaveCorrectUpdate() {
         Email email = emailRepository.findById(FIRST_EMAIL_ID).get();
         email.setName(EMAIL_NAME);
 
@@ -48,7 +48,7 @@ public class EmailRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectFindByName(){
+    public void shouldHaveCorrectFindByName() {
         Email actualEmail = emailRepository.findByEmailName(REAL_EMAIL).get();
         Email expectedEmail = emailRepository.findById(FIRST_EMAIL_ID).get();
         assertThat(actualEmail)
@@ -57,7 +57,7 @@ public class EmailRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectSave(){
+    public void shouldHaveCorrectSave() {
         emailRepository.saveEmail(EMAIL);
         Email actualEmail = entityManager.find(Email.class, EMAIL_ID);
         System.out.println("actualEmail.getName() = " + actualEmail.getName());
@@ -65,7 +65,7 @@ public class EmailRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectDelete(){
+    public void shouldHaveCorrectDelete() {
         emailRepository.saveEmail(EMAIL);
         emailRepository.deleteEmailById(EMAIL_ID);
         Optional<Email> deletedEmail = emailRepository.findById(EMAIL_ID);

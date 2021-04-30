@@ -43,11 +43,11 @@ public class EmailRepositoryImpl implements EmailRepository {
     public Optional<Email> findByEmailName(String emailName) {
         Query query = entityManager.createQuery("select id from emails where name = :email_name");
         query.setParameter("email_name", emailName);
-        List resultList = query.getResultList();
+        List<Long> resultList = query.getResultList();
         if (resultList.isEmpty()) {
             return Optional.empty();
         } else {
-            Long foundEmailId = (Long) resultList.get(0);
+            Long foundEmailId = resultList.get(0);
             Email foundEmail = entityManager.find(Email.class, foundEmailId);
             return Optional.ofNullable(foundEmail);
         }

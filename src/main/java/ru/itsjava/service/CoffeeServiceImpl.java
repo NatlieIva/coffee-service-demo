@@ -14,13 +14,13 @@ public class CoffeeServiceImpl implements CoffeeService {
 
     private final CoffeeRepository coffeeRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional (readOnly = true)
     @Override
     public Optional<Coffee> findByPrice(double price) {
         return coffeeRepository.findByPrice(price);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional (readOnly = true)
     @Override
     public Optional<Coffee> findById(long id) {
         return coffeeRepository.findById(id);

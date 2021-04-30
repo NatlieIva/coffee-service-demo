@@ -32,18 +32,18 @@ public class EmailServiceImpl implements EmailService {
         emailRepository.updateEmail(email);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional (readOnly = true)
     @Override
     public Optional<Email> findById(long id) {
         return emailRepository.findById(id);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional (readOnly = true)
     @Override
     public Optional<Email> findByEmailName(String emailName) {
         try {
             return emailRepository.findByEmailName(emailName);
-        } catch (NoResultException noResultException){
+        } catch (NoResultException noResultException) {
             return Optional.empty();
         }
     }

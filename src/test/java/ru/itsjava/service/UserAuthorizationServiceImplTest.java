@@ -30,7 +30,7 @@ public class UserAuthorizationServiceImplTest {
     UserAuthorizationServiceImpl userAuthorizationService;
 
     @Test
-    public void shouldHaveCorrectAuthorization(){
+    public void shouldHaveCorrectAuthorization() {
         User actualUser = userAuthorizationService.authorization(EMAIL);
         User expectedUser = entityManager.find(User.class, USER_ID);
         Assertions.assertEquals(expectedUser, actualUser);

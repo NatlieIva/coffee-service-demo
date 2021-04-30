@@ -12,9 +12,9 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@DisplayName("Класс CoffeeRepository должен: ")
+@DisplayName ("Класс CoffeeRepository должен: ")
 @DataJpaTest
-@Import(CoffeeRepositoryImpl.class)
+@Import (CoffeeRepositoryImpl.class)
 public class CoffeeRepositoryImplTest {
     public static final long FIRST_COFFEE_ID = 1L;
     public static final int PRICE = 100_000;

@@ -1,5 +1,5 @@
 package ru.itsjava.service;
 
 public interface ScannerService {
-   String readLine();
+    String readLine();
 }

@@ -28,14 +28,14 @@ public class UserRepositoryImplTest {
     private EntityManager entityManager;
 
     @Test
-    public void shouldHaveCorrectFindById(){
+    public void shouldHaveCorrectFindById() {
         User expectedUser = entityManager.find(User.class, FIRST_USER_ID);
         Optional<User> actualUser = userRepository.findUserById(FIRST_USER_ID);
         assertThat(actualUser).isPresent().get().usingRecursiveComparison().isEqualTo(expectedUser);
     }
 
     @Test
-    public void shouldHaveCorrectUpdate(){
+    public void shouldHaveCorrectUpdate() {
         User user = userRepository.findUserById(FIRST_USER_ID).get();
         user.setName(USER_NAME);
 
@@ -48,7 +48,7 @@ public class UserRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectFindByEmail(){
+    public void shouldHaveCorrectFindByEmail() {
         User actualUser = entityManager.find(User.class, FIRST_USER_ID);
         Email actualEmail = actualUser.getEmail();
 
@@ -59,7 +59,7 @@ public class UserRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectSave(){
+    public void shouldHaveCorrectSave() {
         User expectedUser = entityManager.find(User.class, FIRST_USER_ID);
         userRepository.saveUser(expectedUser);
         User actualUser = entityManager.find(User.class, USER_ID);
@@ -68,7 +68,7 @@ public class UserRepositoryImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectDelete(){
+    public void shouldHaveCorrectDelete() {
         userRepository.deleteUserById(FIRST_USER_ID);
         Optional<User> deletedUser = userRepository.findUserById(FIRST_USER_ID);
         assertThat(deletedUser).isEmpty();

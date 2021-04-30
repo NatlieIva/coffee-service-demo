@@ -25,7 +25,7 @@ public class DiscountCalculationServiceImplTest {
     EntityManager entityManager;
 
     @Test
-    public void shouldHaveCorrectCalculateDiscount(){
+    public void shouldHaveCorrectCalculateDiscount() {
         User user = entityManager.find(User.class, USER_ID);
         Assertions.assertEquals(USER_PRICE, discountCalculationService.calculate(user, PRICE));
     }

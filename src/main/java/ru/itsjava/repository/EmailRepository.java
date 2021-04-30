@@ -1,6 +1,5 @@
 package ru.itsjava.repository;
 
-
 import ru.itsjava.domain.Email;
 
 import java.util.Optional;

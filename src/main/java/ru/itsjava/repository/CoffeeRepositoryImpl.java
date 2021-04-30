@@ -23,7 +23,7 @@ public class CoffeeRepositoryImpl implements CoffeeRepository {
         query.setParameter("price", price);
         Long foundCoffeeId = (Long) query.getSingleResult();
         Coffee foundCoffee = entityManager.find(Coffee.class, foundCoffeeId);
-            return Optional.ofNullable(foundCoffee);
+        return Optional.ofNullable(foundCoffee);
     }
 
     @Override
