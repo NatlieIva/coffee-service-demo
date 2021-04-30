@@ -12,7 +12,7 @@ VALUES (1, 'Bob', 1, 1),
        (2, 'Jack', 3, 2);
 
 INSERT INTO COFFEES(ID, NAME, PRICE)
-VALUES (1, 'Americano', 100),
-       (2, 'Latte', 200),
-       (3, 'Cappuccino', 150),
-       (4, 'Espresso', 50);
+VALUES (1, 'Americano', 100.0),
+       (2, 'Latte', 200.0),
+       (3, 'Cappuccino', 150.0),
+       (4, 'Espresso', 50.0);

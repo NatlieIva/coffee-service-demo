@@ -18,7 +18,7 @@ public class CoffeeRepositoryImpl implements CoffeeRepository {
     private EntityManager entityManager;
 
     @Override
-    public Optional<Coffee> findByPrice(int price) {
+    public Optional<Coffee> findByPrice(double price) {
         Query query = entityManager.createQuery("select id from coffees where price = :price");
         query.setParameter("price", price);
         Long foundCoffeeId = (Long) query.getSingleResult();

@@ -3,8 +3,8 @@ package ru.itsjava.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.itsjava.repository.CoffeeRepository;
 import ru.itsjava.domain.Coffee;
+import ru.itsjava.repository.CoffeeRepository;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public class CoffeeServiceImpl implements CoffeeService {
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Coffee> findByPrice(int price) {
+    public Optional<Coffee> findByPrice(double price) {
         return coffeeRepository.findByPrice(price);
     }
 

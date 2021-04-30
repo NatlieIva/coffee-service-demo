@@ -9,7 +9,7 @@ public class DiscountCalculationServiceImpl implements DiscountCalculationServic
 
     @Transactional
     @Override
-    public double calculate(User user, int price) {
+    public double calculate(User user, double price) {
         return price - price * user.getDiscountCard().getDiscount() / 100;
     }
 }

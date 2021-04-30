@@ -5,7 +5,7 @@ import ru.itsjava.domain.Coffee;
 import java.util.Optional;
 
 public interface CoffeeService {
-    Optional<Coffee> findByPrice(int price);
+    Optional<Coffee> findByPrice(double price);
 
     Optional<Coffee> findById(long id);
 

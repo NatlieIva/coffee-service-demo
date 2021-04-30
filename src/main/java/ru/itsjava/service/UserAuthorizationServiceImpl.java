@@ -2,12 +2,11 @@ package ru.itsjava.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.itsjava.repository.DiscountCardRepository;
-import ru.itsjava.repository.EmailRepository;
-import ru.itsjava.repository.UserRepository;
 import ru.itsjava.domain.Email;
 import ru.itsjava.domain.User;
+import ru.itsjava.repository.DiscountCardRepository;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -19,24 +18,23 @@ public class UserAuthorizationServiceImpl implements UserAuthorizationService {
 
     @Override
     public User authorization(String email) {
-        Email foundEmailByName;
-        if (emailService.findByEmailName(email).isPresent()) {
-            foundEmailByName = emailService.findByEmailName(email).get();
-        } else {
-            return addUser();
+        Optional<Email> foundEmailByName = emailService.findByEmailName(email);
+
+        if (foundEmailByName.isPresent()) {
+            return userService.findUserByEmail(foundEmailByName.get()).get();
         }
-        return userService.findUserByEmail(foundEmailByName).get();
+        return addUser();
     }
 
     @Override
     public User addUser() {
         System.out.println("Enter your name");
-        String name = scannerService.scannerStart();
+        String name = scannerService.readLine();
         System.out.println("Enter your email");
-        String email = scannerService.scannerStart();
+        String email = scannerService.readLine();
 
-        User user = new User(0L, name, discountCardRepository.findById(1L).get(),
-                emailService.saveEmail(new Email(0L, email)));
+        Email savedEmail = new Email(0L, email);
+        User user = new User(0L, name, discountCardRepository.findById(1L).get(), savedEmail);
         userService.saveUser(user);
         return user;
     }

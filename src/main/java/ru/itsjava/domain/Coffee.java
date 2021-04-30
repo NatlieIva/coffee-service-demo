@@ -1,10 +1,10 @@
 package ru.itsjava.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +20,5 @@ public class Coffee {
     private String name;
 
     @Column (name = "price")
-    private int price;
+    private double price;
 }

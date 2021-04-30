@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
     public Optional<User> findUserByEmail(Email email) {
         Query queryUser = entityManager.createQuery("select id from users where email = :email");
         queryUser.setParameter("email", email);
-        List resultList = queryUser.getResultList();
+        List <Long> resultList = queryUser.getResultList();
         if (resultList.isEmpty()) {
             return Optional.empty();
         } else {
