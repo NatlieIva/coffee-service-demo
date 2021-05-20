@@ -58,10 +58,10 @@ public class EmailRepositoryImplTest {
 
     @Test
     public void shouldHaveCorrectSave() {
-        emailRepository.saveEmail(EMAIL);
-        Email actualEmail = entityManager.find(Email.class, EMAIL_ID);
+        Email expectedEmail = emailRepository.saveEmail(EMAIL);
+        Email actualEmail = entityManager.find(Email.class, expectedEmail.getId());
         System.out.println("actualEmail.getName() = " + actualEmail.getName());
-        assertThat(actualEmail).isNotNull().isEqualTo(EMAIL);
+        assertThat(actualEmail).isNotNull().isEqualTo(expectedEmail);
     }
 
     @Test

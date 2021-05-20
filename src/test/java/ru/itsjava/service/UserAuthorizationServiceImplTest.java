@@ -3,6 +3,7 @@ package ru.itsjava.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -11,6 +12,8 @@ import ru.itsjava.domain.Email;
 import ru.itsjava.domain.User;
 
 import javax.persistence.EntityManager;
+
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @DisplayName ("Класс UserAuthorizationService должен: ")
@@ -37,8 +40,14 @@ public class UserAuthorizationServiceImplTest {
     }
 
     @Test
-    public void shouldHaveCorrectAddUser(){
+    public void shouldHaveCorrectAddUser() {
+        UserAuthorizationServiceImpl mockUser = Mockito.mock(UserAuthorizationServiceImpl.class);
+        when(mockUser.readUserFromConsole()).thenReturn(new User(2L, "testName",
+                entityManager.find(DiscountCard.class, 1L),
+                new Email(2L, "testEmail")));
         userAuthorizationService.addUser();
+        User expectedUser = entityManager.find(User.class, 2L);
+        Assertions.assertEquals(expectedUser.getName(), "testName");
         // I don't know how to do it
     }
 }

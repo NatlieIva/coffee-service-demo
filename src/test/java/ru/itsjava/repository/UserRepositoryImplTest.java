@@ -60,9 +60,9 @@ public class UserRepositoryImplTest {
 
     @Test
     public void shouldHaveCorrectSave() {
-        User expectedUser = entityManager.find(User.class, FIRST_USER_ID);
-        userRepository.saveUser(expectedUser);
-        User actualUser = entityManager.find(User.class, USER_ID);
+        User savedUser = entityManager.find(User.class, FIRST_USER_ID);
+        User expectedUser = userRepository.saveUser(savedUser);
+        User actualUser = entityManager.find(User.class, expectedUser.getId());
         System.out.println("actualUser.getId() = " + actualUser.getId());
         assertThat(actualUser).isNotNull().isEqualTo(expectedUser);
     }

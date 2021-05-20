@@ -19,22 +19,24 @@ public class UserAuthorizationServiceImpl implements UserAuthorizationService {
     @Override
     public User authorization(String email) {
         Optional<Email> foundEmailByName = emailService.findByEmailName(email);
-
-        if (foundEmailByName.isPresent()) {
-            return userService.findUserByEmail(foundEmailByName.get()).get();
-        }
-        return addUser();
+        return foundEmailByName.map(value -> userService.findUserByEmail(value).get()).orElse(this.addUser());
     }
 
-    @Override
-    public User addUser() {
+    public User readUserFromConsole() {
+//        замокать в тестах scannerService.readLine() - возвращает Привет;
         System.out.println("Enter your name");
         String name = scannerService.readLine();
         System.out.println("Enter your email");
         String email = scannerService.readLine();
 
         Email savedEmail = new Email(0L, email);
-        User user = new User(0L, name, discountCardRepository.findById(1L).get(), savedEmail);
+        return new User(0L, name, discountCardRepository.findById(1L).get(), savedEmail);
+
+    }
+
+    @Override
+    public User addUser() {
+        User user = readUserFromConsole();
         userService.saveUser(user);
         return user;
     }

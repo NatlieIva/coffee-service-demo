@@ -51,10 +51,10 @@ public class DiscountCardRepositoryImplTest {
 
     @Test
     public void shouldHaveCorrectSave() {
-        discountCardRepository.saveDiscountCard(DISCOUNT_CARD);
-        Optional<DiscountCard> actualDiscountCard = discountCardRepository.findById(DISCOUNT_CARD_ID);
+        DiscountCard expectedDiscountCard = discountCardRepository.saveDiscountCard(DISCOUNT_CARD);
+        Optional<DiscountCard> actualDiscountCard = discountCardRepository.findById(expectedDiscountCard.getId());
         System.out.println("actualDiscountCard.get().getColor() = " + actualDiscountCard.get().getColor());
-        assertThat(actualDiscountCard.get()).isNotNull().isEqualTo(DISCOUNT_CARD);
+        assertThat(actualDiscountCard.get()).isNotNull().isEqualTo(expectedDiscountCard);
     }
 
     @Test

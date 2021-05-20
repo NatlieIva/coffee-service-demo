@@ -58,11 +58,11 @@ public class CoffeeRepositoryImplTest {
 
     @Test
     public void shouldHaveCorrectSave(){
-        coffeeRepository.saveCoffee(COFFEE);
+        Coffee expectedCoffee = coffeeRepository.saveCoffee(COFFEE);
 //        Coffee actualCoffee = coffeeRepository.findById(COFFEE_ID).get();
-        Coffee actualCoffee = entityManager.find(Coffee.class, COFFEE_ID);
+        Coffee actualCoffee = entityManager.find(Coffee.class, expectedCoffee.getId());
         System.out.println("actualCoffee.getName() = " + actualCoffee.getName());
-        assertThat(actualCoffee).isNotNull().isEqualTo(COFFEE);
+        assertThat(actualCoffee).isNotNull().isEqualTo(expectedCoffee);
     }
 
     @Test
