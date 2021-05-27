@@ -7,6 +7,7 @@ import ru.itsjava.domain.Email;
 import ru.itsjava.domain.User;
 import ru.itsjava.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -42,5 +43,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findUserByEmail(Email email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.getAll();
     }
 }

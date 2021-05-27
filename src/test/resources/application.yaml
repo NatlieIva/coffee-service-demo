@@ -3,7 +3,7 @@ spring:
     url: jdbc:h2:mem:testdb
     initialization-mode: always
     data: my_test_data.sql
-    schema: my_schema.sql
+    schema: schema.sql
 
   jpa:
     generate-ddl: false

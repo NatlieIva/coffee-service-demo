@@ -8,6 +8,7 @@ import ru.itsjava.domain.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,4 +56,12 @@ public class UserRepositoryImpl implements UserRepository {
             return Optional.ofNullable(foundUser);
         }
     }
+
+    @Override
+    public List<User> getAll() {
+        TypedQuery<User> query = entityManager.createQuery("select u " +
+                "from users u", User.class);
+        return query.getResultList();
+    }
 }
+

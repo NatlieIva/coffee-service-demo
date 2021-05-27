@@ -19,7 +19,7 @@ public class UserAuthorizationServiceImpl implements UserAuthorizationService {
     @Override
     public User authorization(String email) {
         Optional<Email> foundEmailByName = emailService.findByEmailName(email);
-        return foundEmailByName.map(value -> userService.findUserByEmail(value).get()).orElse(this.addUser());
+        return foundEmailByName.map(value -> userService.findUserByEmail(value).get()).orElseGet(this::addUser);
     }
 
     public User readUserFromConsole() {
