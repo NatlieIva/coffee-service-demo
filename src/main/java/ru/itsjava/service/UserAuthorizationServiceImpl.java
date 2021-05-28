@@ -1,6 +1,6 @@
 package ru.itsjava.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.itsjava.domain.Email;
 import ru.itsjava.domain.User;
@@ -8,7 +8,7 @@ import ru.itsjava.repository.DiscountCardRepository;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Service
 public class UserAuthorizationServiceImpl implements UserAuthorizationService {
     private final UserService userService;

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import ru.itsjava.domain.DiscountCard;
 import ru.itsjava.domain.Email;
@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@DataJpaTest
 @DisplayName ("Класс UserAuthorizationService должен: ")
 @Import (UserAuthorizationServiceImpl.class)
 public class UserAuthorizationServiceImplTest {
@@ -31,6 +31,9 @@ public class UserAuthorizationServiceImplTest {
 
     @Autowired
     UserAuthorizationServiceImpl userAuthorizationService;
+
+    @Autowired
+    UserService userService;
 
     @Test
     public void shouldHaveCorrectAuthorization() {
