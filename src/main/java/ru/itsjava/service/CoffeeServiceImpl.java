@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Coffee;
 import ru.itsjava.repository.CoffeeRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -42,5 +43,11 @@ public class CoffeeServiceImpl implements CoffeeService {
     @Override
     public void updateCoffee(Coffee coffee) {
         coffeeRepository.updateCoffee(coffee);
+    }
+
+    @Transactional (readOnly = true)
+    @Override
+    public List<Coffee> findAll() {
+        return coffeeRepository.getAll();
     }
 }

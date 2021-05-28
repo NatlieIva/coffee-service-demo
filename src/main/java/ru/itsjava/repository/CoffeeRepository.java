@@ -2,6 +2,7 @@ package ru.itsjava.repository;
 
 import ru.itsjava.domain.Coffee;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CoffeeRepository {
@@ -15,5 +16,7 @@ public interface CoffeeRepository {
     void deleteCoffeeById(long id);
 
     void updateCoffee(Coffee coffee);
+
+    List<Coffee> getAll();
 
 }

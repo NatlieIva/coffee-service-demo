@@ -2,6 +2,7 @@ package ru.itsjava.service;
 
 import ru.itsjava.domain.Coffee;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CoffeeService {
@@ -14,4 +15,6 @@ public interface CoffeeService {
     void deleteCoffeeById(long id);
 
     void updateCoffee(Coffee coffee);
+
+    List<Coffee> findAll();
 }

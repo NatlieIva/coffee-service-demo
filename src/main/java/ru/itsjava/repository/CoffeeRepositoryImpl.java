@@ -8,6 +8,8 @@ import ru.itsjava.domain.Coffee;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -49,5 +51,12 @@ public class CoffeeRepositoryImpl implements CoffeeRepository {
     @Override
     public void updateCoffee(Coffee coffee) {
         entityManager.merge(coffee);
+    }
+
+    @Override
+    public List<Coffee> getAll() {
+        TypedQuery<Coffee> query = entityManager.createQuery("select c " +
+                "from coffees c", Coffee.class);
+        return query.getResultList();
     }
 }

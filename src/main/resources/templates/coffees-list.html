@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" th:href="@{static/coffees-list.css}">
+    <!--    <style type="text/css">-->
+
+    <!--        body {-->
+    <!--            padding: 50px;-->
+    <!--        }-->
+
+    <!--        .users td {-->
+    <!--            border: 1px solid #000000;-->
+    <!--            padding: 15px;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+<body>
+<h1>Menu:</h1>
+
+<table class="coffees">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="coffee: ${coffees}">
+        <td th:text="${coffee.id}">1</td>
+        <td th:text="${coffee.name}">Latte</td>
+        <td th:text="${coffee.price}">1</td>
+        <td>
+            <a th:href="@{/coffees/{id}/edit(id=${coffee.id})}" href="coffees-edit.html">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
