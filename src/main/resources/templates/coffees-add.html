@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add coffee</title>
+</head>
+<body>
+
+<form id="edit-form" th:action="@{/coffees/add}" th:method="post" action="coffees-add.html">
+    <h1>Coffee Info:</h1>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input1">Price:</label>
+        <input id="authors-input1" name="price" type="text"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete coffee</title>
+</head>
+<body>
+
+<form id="edit-form" th:action="@{/coffees/{id}/delete(id=${coffeeDto.id})}" th:method="post"
+      action="coffees-delete.html">
+    <h1>Coffee Info:</h1>
+
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" name="id" type="text" readonly="readonly" th:value="${coffeeDto.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text" readonly="readonly" th:value="${coffeeDto.name}"
+               value="Double americano"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input1">Price:</label>
+        <input id="authors-input1" name="price" type="text" readonly="readonly" th:value="${coffeeDto.price}"
+               value="175.0"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Delete</button>
+    </div>
+</form>
+
+</body>
+</html>

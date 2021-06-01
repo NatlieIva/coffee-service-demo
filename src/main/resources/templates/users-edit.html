@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit user</title>
+</head>
+<body>
+
+<!-- user edition -->
+<form id="edit-form" th:action="@{/users/{id}/edit(id=${userDto.id})}" th:method="post" action="users-edit.html">
+    <h1>User Info:</h1>
+
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" name="id" type="text" readonly="readonly" th:value="${userDto.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text" th:value="${userDto.name}" value="Tanya Grotter"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input1">Discount Card:</label>
+        <input id="authors-input1" name="discountCard" type="text" th:value="${userDto.discount_card}"
+               value="your card"/>
+    </div>
+    <div class="row">
+        <label for="authors-input2">Discount Card:</label>
+        <input id="authors-input2" name="email" type="text" th:value="${userDto.email}" value="default@mail.com"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+</body>
+</html>

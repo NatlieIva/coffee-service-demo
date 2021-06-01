@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Menu</title>
-    <!--    <link rel="stylesheet" type="text/css" th:href="@{../static/coffees-list.css}">-->
-    <link rel="stylesheet" type="text/css" href="../static/coffees-list.css">
-
+    <link rel="stylesheet" type="text/css" th:href="@{../coffees-list.css}">
 </head>
 <body>
 <h1>Menu:</h1>
@@ -26,8 +24,12 @@
         <td>
             <a th:href="@{/coffees/{id}/edit(id=${coffee.id})}" href="coffees-edit.html">Edit</a>
         </td>
+        <td>
+            <a th:href="@{/coffees/{id}/delete(id=${coffee.id})}" href="coffees-delete.html">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>
+<a href="coffees-add.html">Add coffee</a>
 </body>
 </html>
