@@ -34,7 +34,7 @@ public class UserController {
     @PostMapping ("/users{id}/edit")
     public String editUser(UserDto userDto) {
         userService.saveUser(UserDto.toDomainObject(userDto));
-        return "redirect:/users-list";
+        return "redirect:/users";
     }
 
     @GetMapping ("/users/{id}/delete")
