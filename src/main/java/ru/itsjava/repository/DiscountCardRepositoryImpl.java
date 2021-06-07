@@ -6,6 +6,8 @@ import ru.itsjava.domain.DiscountCard;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -37,5 +39,12 @@ public class DiscountCardRepositoryImpl implements DiscountCardRepository {
 
     public Optional<DiscountCard> findById(long id) {
         return Optional.ofNullable(entityManager.find(DiscountCard.class, id));
+    }
+
+    @Override
+    public List<DiscountCard> getAll() {
+        TypedQuery<DiscountCard> query = entityManager.createQuery("select d " +
+                "from discount_cards d", DiscountCard.class);
+        return query.getResultList();
     }
 }

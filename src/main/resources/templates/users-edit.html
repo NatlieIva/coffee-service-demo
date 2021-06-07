@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<!-- user edition -->
 <form id="edit-form" th:action="@{/users/{id}/edit(id=${userDto.id})}" th:method="post" action="users-edit.html">
     <h1>User Info:</h1>
 
@@ -17,17 +16,22 @@
 
     <div class="row">
         <label for="title-input">Name:</label>
-        <input id="title-input" name="name" type="text" th:value="${userDto.name}" value="Tanya Grotter"/>
+        <input id="title-input" name="name" type="text" th:value="${userDto.name}" value="Test name"/>
     </div>
 
     <div class="row">
         <label for="authors-input1">Discount Card:</label>
-        <input id="authors-input1" name="discountCard" type="text" th:value="${userDto.discount_card}"
-               value="your card"/>
+        <input id="authors-input1" name="color" type="text" th:value="${userDto.discountCardColor}" value="white"/>
     </div>
+
     <div class="row">
         <label for="authors-input2">Discount Card:</label>
-        <input id="authors-input2" name="email" type="text" th:value="${userDto.email}" value="default@mail.com"/>
+        <input id="authors-input2" name="discount" type="text" th:value="${userDto.discount}" value="0"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input3">Email</label>
+        <input id="authors-input3" name="email" type="text" th:value="${userDto.email}" value="test@mail.re"/>
     </div>
 
     <div class="row">

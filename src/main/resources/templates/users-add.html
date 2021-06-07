@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add user</title>
+</head>
+<body>
+
+<form id="add-form" th:action="@{/users/add}" th:method="post" action="users-add.html">
+    <h1>User Info:</h1>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input1">Discount Card:</label>
+        <input id="authors-input1" name="color" type="text"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input2">Discount Card:</label>
+        <input id="authors-input2" name="discount" type="text"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input3">Email:</label>
+        <input id="authors-input3" name="email" type="text"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+</body>
+</html>

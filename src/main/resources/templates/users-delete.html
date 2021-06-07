@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete user</title>
+</head>
+<body>
+
+<form id="edit-form" th:action="@{/users/{id}/delete(id=${userDto.id})}" th:method="post"
+      action="users-delete.html">
+    <h1>User Info:</h1>
+
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" name="id" type="text" readonly="readonly" th:value="${userDto.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text" readonly="readonly" th:value="${userDto.name}"
+               value="Test name"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input1">Discount Card:</label>
+        <input id="authors-input1" name="discount_card" type="text" readonly="readonly"
+               th:value="${userDto.discountCardColor}"
+               value="white"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input2">Discount:</label>
+        <input id="authors-input2" name="discount_card" type="text" readonly="readonly"
+               th:value="${userDto.discount}"
+               value="white"/>
+    </div>
+    <div class="row">
+        <label for="authors-input3">Email:</label>
+        <input id="authors-input3" name="email" type="text" readonly="readonly" th:value="${userDto.email}"
+               value="test@mail.ru"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Delete</button>
+    </div>
+</form>
+
+</body>
+</html>

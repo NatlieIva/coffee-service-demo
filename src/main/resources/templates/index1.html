@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main page for users</title>
 </head>
 <body>
 <h1>Welcome to the coffee shop!</h1>
+<a th:href="@{/coffees}" href="coffees-list.html">Menu</a>
+<a th:href="@{/users}" href="users-list.html">Users list</a>
 </body>
 </html>

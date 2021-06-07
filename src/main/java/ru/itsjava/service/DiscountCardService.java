@@ -1,11 +1,11 @@
-package ru.itsjava.repository;
+package ru.itsjava.service;
 
 import ru.itsjava.domain.DiscountCard;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface DiscountCardRepository {
+public interface DiscountCardService {
 
     DiscountCard saveDiscountCard(DiscountCard discountCard);
 
@@ -15,5 +15,5 @@ public interface DiscountCardRepository {
 
     Optional<DiscountCard> findById(long id);
 
-    List<DiscountCard> getAll();
+    List<DiscountCard> findAll();
 }

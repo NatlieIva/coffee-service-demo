@@ -1,4 +1,4 @@
-package ru.itsjava.rest.controller;
+package ru.itsjava.rest.controller.coffee;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -46,8 +46,7 @@ public class CoffeeController {
     }
 
     @GetMapping ("/coffees/add")
-    public String addCoffee(@PathVariable Model model) {
-        model.addAttribute("coffeeDto");
+    public String addCoffee() {
         return "coffees-add";
     }
 
