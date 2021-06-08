@@ -13,8 +13,8 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Discount Card</th>
-        <th>discount</th>
+        <th>Discount card</th>
+        <th>Discount</th>
         <th>Email</th>
     </tr>
     </thead>
@@ -22,8 +22,8 @@
     <tr th:each="user: ${users}">
         <td th:text="${user.id}">1</td>
         <td th:text="${user.name}">User</td>
-        <td th:text="${user.discountCard.getColor()}">white</td>
-        <td th:text="${user.discountCard.getDiscount()}">0</td>
+        <td th:text="${user.discountCard.color}">white</td>
+        <td th:text="${user.discountCard.discount}">0</td>
         <td th:text="${user.email}">1</td>
         <td>
             <a th:href="@{/users/{id}/edit(id=${user.id})}" href="users-edit.html">Edit</a>
